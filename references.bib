@@ -1,18 +1,41 @@
 %% ---- Core prior work (buoyancy-solved HMDs) ----
 
-@inproceedings{osone2017safe,
-  author    = {Osone, Hiroki and others},
-  title     = {Demo: {A} Safe Low-cost {HMD} for Underwater {VR} Experiences},
-  booktitle = {ACM SIGGRAPH 2017 Emerging Technologies},
-  year      = {2017},
-  %% TODO: ページ数・DOIを論文から確認して追記
+%% NOTE: "safe low-cost HMD" は Osone ではなく Zhang et al. (2016) の論文
+@inproceedings{zhang2016safe,
+  author    = {Zhang, Wenlong and Tan, Chek Tien and Chen, Tim},
+  title     = {A Safe Low-cost {HMD} for Underwater {VR} Experiences},
+  booktitle = {SIGGRAPH Asia 2016 Mobile Graphics and Interactive Applications},
+  series    = {SA '16},
+  year      = {2016},
+  articleno = {12},
+  publisher = {ACM},
+  doi       = {10.1145/2999508.2999519},
+  %% TODO: DOI 10.1145/2999508.2999519 はACM DLへのアクセス制限により直接確認できず
+  %% ACM Digital Library (https://dl.acm.org/doi/10.1145/2999508.2999519) で要確認
 }
 
-@article{osone2018optimized,
-  author    = {Osone, Hiroki and others},
+%% Osone et al. の論文は "Optimized HMD System" のみ（2017）
+@inproceedings{osone2017optimized,
+  author    = {Osone, Hiroyuki and Yoshida, Takatoshi and Ochiai, Yoichi},
   title     = {Optimized {HMD} System for Underwater {VR} Experience},
-  %% TODO: ジャーナル名・巻・号・ページ・DOIを確認して追記
+  booktitle = {ACM SIGGRAPH 2017 Posters},
+  series    = {SIGGRAPH '17},
+  year      = {2017},
+  articleno = {25},
+  numpages  = {2},
+  publisher = {ACM},
+  doi       = {10.1145/3102163.3102232},
+}
+
+%% 同論文の会議版（ACE 2017 / Springer）
+@inproceedings{osone2018ace,
+  author    = {Osone, Hiroyuki and Yoshida, Takatoshi and Ochiai, Yoichi},
+  title     = {Optimized {HMD} System for Underwater {VR} Experience},
+  booktitle = {Advances in Computer Entertainment Technology (ACE 2017)},
+  series    = {Lecture Notes in Computer Science},
   year      = {2018},
+  publisher = {Springer},
+  doi       = {10.1007/978-3-319-76270-8_31},
 }
 
 %% ---- Cephalophoil / hammerhead shark hydrodynamics ----
@@ -44,6 +67,5 @@
 }
 
 %% TODO: 以下を追加
-%% - 水泳/潜水艇の流体抵抗に関する論文（"異分野からのアナロジー"根拠に）
-%% - 水中深度推定/水中ARの先行研究
-%% - osone2017safe, osone2018optimized の正確な著者・DOI情報を確認
+%% - 水泳/潜水艇の流体抵抗に関する論文（異分野アナロジーの根拠）
+%% - 水中深度推定・水中AR関連の先行研究
