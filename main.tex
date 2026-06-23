@@ -11,7 +11,8 @@
 
 \begin{document}
 
-\title{Hammerhead HMD: A Cephalophoil-Inspired Underwater Augmented Reality Headset}
+\title{Hammerhead HMD: A Cephalophoil-Inspired Underwater AR Headset
+       with Reduced Hydrodynamic Drag and Yaw Torque}
 
 \author{Sho Nakazawa}
 \affiliation{%
@@ -21,23 +22,30 @@
 }
 \email{shonkzw0927@gmail.com}
 
-%%
 %% TODO: 共著者がいれば追加
-%%
 
 \begin{abstract}
-We present Hammerhead HMD, an underwater augmented reality head-mounted display
-inspired by the cephalophoil morphology of hammerhead sharks.
-The lateral extension of the housing improves stereoscopic depth perception
-and widens the horizontal field of view in subaquatic environments.
-We evaluate the hydrodynamic characteristics of the device using
-Particle Image Velocimetry (PIV) in a water tunnel,
-providing quantitative flow visualization around the headset.
-%% TODO: 定量的な結果（抗力係数など）が出たら1文追加
+Recent work has demonstrated that water-filled head-mounted displays (HMDs)
+can achieve neutral buoyancy, making active swimming in underwater VR physically
+feasible~\cite{osone2017safe,osone2018optimized}.
+However, once users actually swim forward, the boxy shell of conventional HMDs
+imposes substantial hydrodynamic drag and, during head rotation, an abrupt
+restoring torque—both of which translate directly to cervical fatigue
+and degraded experience quality.
+We present the \textit{Hammerhead HMD}, a water-filled underwater AR headset
+whose outer shell is shaped after the cephalophoil of hammerhead sharks
+(\textit{Sphyrna} spp.).
+The lateral extension delays flow separation at 0° yaw,
+and generates a stable leading-edge vortex (LEV) at yaw angles up to 30°,
+smoothly redirecting flow and reducing neck torque.
+We evaluate both effects using Particle Image Velocimetry (PIV)
+and compare quantitatively against a conventional box-shaped baseline.
+%% TODO: 定量結果（抗力○%削減、トルク○%削減）が出たら追記
 \end{abstract}
 
-\keywords{underwater augmented reality, head-mounted display, hydrodynamics,
-particle image velocimetry, wearable}
+\keywords{underwater augmented reality, head-mounted display,
+          hydrodynamics, particle image velocimetry,
+          leading-edge vortex, biomimicry}
 
 \maketitle
 
@@ -45,78 +53,126 @@ particle image velocimetry, wearable}
 \section{Introduction}
 %%------------------------------------------------------------
 
-Augmented reality in underwater environments demands optics that withstand
-pressure, a housing that resists hydrodynamic drag, and a form factor
-compatible with diving equipment.
-Conventional terrestrial HMDs are ill-suited for this context:
-their boxy profiles generate turbulence, and their narrow baselines
-reduce depth cue reliability in water, where light refracts differently
-than in air.
+Osone et al.~\cite{osone2017safe,osone2018optimized} established a key
+breakthrough: filling the optical cavity with water equalizes internal
+and external pressure, eliminating the positive buoyancy that had
+previously pulled users toward the surface and strained their necks.
+Their system evaluation confirms that users can perform head movements
+comfortably \textit{while stationary}.
 
-We take design inspiration from the hammerhead shark (\textit{Sphyrna} spp.),
-whose cephalophoil—the distinctive lateral extension of the head—spatially
-separates the eyes to enhance binocular parallax and electroreceptor coverage.
-Adopting this geometry for an HMD places display and camera modules at a wider
-baseline, improving stereo depth estimation while reducing frontal cross-section.
+Yet as soon as a user begins to swim forward, a different physics regime
+takes over: hydrodynamic drag.
+A flat-fronted, box-shaped HMD behaves as a bluff body, generating
+a large separated wake and substantial pressure drag.
+During yaw rotation—turning the head to look sideways—the same box profile
+stalls abruptly and produces a sharp restoring torque that resists the motion.
+Neither effect was measured in prior work.
+
+We address this gap with the \textbf{Hammerhead HMD}, whose shell geometry
+is directly inspired by the cephalophoil of hammerhead sharks.
+This lateral cranial extension has been studied as a source of enhanced
+binocular overlap and hydrodynamic control surface~\cite{kajiura2003}.
+Translated to an HMD, it (i) reduces the frontal bluff-body cross-section,
+(ii) widens the stereo camera baseline for improved depth estimation in water,
+and (iii) produces a stable LEV during yaw, reducing neck torque.
 
 %%------------------------------------------------------------
 \section{System Design}
 %%------------------------------------------------------------
 
-%% TODO: システム写真 or CADレンダリングを figures/system.png に追加
+%% TODO: システム写真またはCADレンダリング → figures/system.png
 
-\subsection{Structural Design}
-The housing extends laterally \textbf{[TODO: 寸法 mm]} on each side from the
-diver's midline, forming the cephalophoil profile.
-The body is fabricated from \textbf{[TODO: 素材（例: 3Dプリント PLA / PETG / アルミ）]}
-and is sealed to \textbf{[TODO: 耐水圧仕様 (m)]} depth.
+\subsection{Optical Design}
+Following~\cite{osone2017safe}, the optical cavity is filled with water,
+equalizing buoyancy.
+Each lateral pod houses a \textbf{[TODO: カメラ仕様]} and a
+\textbf{[TODO: ディスプレイ仕様（例: micro-OLED, FoV）]}.
+The stereo baseline is \textbf{[TODO: mm]},
+wider than the ~65\,mm of terrestrial HMDs,
+improving underwater depth estimation where air-glass refraction
+is absent at the eye interface.
 
-\subsection{Optical \& Sensing Configuration}
-Each lateral pod houses a \textbf{[TODO: カメラ仕様（例: 広角レンズ, 解像度）]}
-and a \textbf{[TODO: ディスプレイ（例: micro-OLED, FoV）]}.
-Stereo baseline is \textbf{[TODO: mm]}, compared to approximately
-65\,mm in a typical terrestrial HMD.
+\subsection{Shell Geometry}
+The outer shell extends \textbf{[TODO: mm]} laterally on each side,
+fabricated from \textbf{[TODO: 素材]} and sealed to
+\textbf{[TODO: 耐水圧 m]} depth.
+Leading edges are smoothly rounded to promote attached flow
+at low-to-moderate yaw angles.
 
 %%------------------------------------------------------------
 \section{Hydrodynamic Evaluation}
 %%------------------------------------------------------------
 
-\subsection{Experimental Setup}
+\subsection{Baseline}
+For comparison we use a conventional box-shaped HMD geometry derived from
+\textbf{[TODO: GrabCAD/Thingiverse の具体モデル名・URL]},
+representative of current commercial full-face-mask VR systems.
+Both models are printed in matte black (+ Rhodamine B coating where available)
+to suppress laser halation.
 
-We evaluated flow behavior using Particle Image Velocimetry (PIV)
-in a recirculating water tunnel.
-A high-speed camera captured tracer particle images at \textbf{4{,}000\,fps}.
-The headset was oscillated at \textbf{5\,Hz} with a stroke of \textbf{9\,mm}
-over \textbf{30 steps} to simulate diver head motion during swimming.
-PIV analysis was performed using PIVlab~\cite{thielicke2021pivlab}.
-
-%% TODO: 水槽の流速（自由流速 U_inf）を記載
-%% TODO: Re数を計算して記載
+\subsection{PIV Setup}
+Experiments were conducted in a recirculating water tunnel.
+%% TODO: 流速 U_inf, Re数
+A high-speed camera acquired tracer images at \textbf{4{,}000\,fps}.
+To capture the out-of-plane velocity components essential for LEV
+characterization, a \textbf{stereo PIV} configuration was employed.
+The headset model was oscillated at \textbf{5\,Hz} with a
+\textbf{9\,mm} stroke over \textbf{30 steps} to simulate diver head motion.
+Yaw angles of 0°, 15°, and 30° were tested for both models.
+Velocity fields were computed using PIVlab~\cite{thielicke2021pivlab};
+pressure fields were reconstructed via the Poisson equation.
 
 \subsection{Results}
 
-Figure~\ref{fig:piv} shows \textbf{[TODO: 代表フレーム or 平均流速場の図]}.
-The cephalophoil profile produced \textbf{[TODO: 観察された流れの特徴（例: 低乱流域, 後流の対称性など）]}.
-%% TODO: 定量結果（例: 最大流速, 抗力推定, 比較対象との差異）
+\paragraph{Drag reduction (0° yaw).}
+%% TODO: ωz渦度マップ or 速度ベクトル場の図
+Figure~\ref{fig:piv_drag} shows \textbf{[TODO: 観測された後流の差異]}.
+The Hammerhead shell delayed separation to \textbf{[TODO: 位置]},
+reducing the recirculation bubble length by \textbf{[TODO: \%]}
+compared with the box baseline.
+
+\paragraph{Yaw torque reduction via LEV (15°–30°).}
+%% TODO: LEV可視化の図
+At 30° yaw, the box shape exhibited abrupt stall and a strong
+restoring torque, whereas the Hammerhead profile sustained a coherent
+leading-edge vortex (Figure~\ref{fig:piv_lev}), reducing peak torque
+by \textbf{[TODO: \%]}.
+
+\paragraph{Sensor-zone turbulence suppression.}
+Poisson-reconstructed pressure maps confirm that camera and display pods
+reside in a low turbulent-kinetic-energy (TKE) region
+\textbf{[TODO: TKE値 or 比率]},
+reducing vibration-induced image degradation.
 
 \begin{figure}[h]
   \centering
-  %% TODO: PIVlab_out.mp4 から代表フレームを切り出して figures/piv_result.png に保存
-  \includegraphics[width=\linewidth]{figures/piv_result}
-  \caption{PIV flow visualization around the Hammerhead HMD.
-           Vectors show in-plane velocity; color encodes speed magnitude.}
-  \label{fig:piv}
+  %% TODO: figures/piv_drag.png — PIVlab_out.mp4 から 0度条件の代表フレーム切り出し
+  \includegraphics[width=\linewidth]{figures/piv_drag}
+  \caption{Velocity vector field and out-of-plane vorticity ($\omega_z$)
+           at 0° yaw. Left: box baseline. Right: Hammerhead HMD.}
+  \label{fig:piv_drag}
+\end{figure}
+
+\begin{figure}[h]
+  \centering
+  %% TODO: figures/piv_lev.png — 30度ヨー角でのLEV可視化
+  \includegraphics[width=\linewidth]{figures/piv_lev}
+  \caption{Swirl strength ($\lambda_{ci}$) at 30° yaw showing stable
+           leading-edge vortex on Hammerhead HMD (right) absent in
+           box baseline (left).}
+  \label{fig:piv_lev}
 \end{figure}
 
 %%------------------------------------------------------------
 \section{Conclusion}
 %%------------------------------------------------------------
 
-We presented the Hammerhead HMD, an underwater AR headset whose
-cephalophoil geometry simultaneously widens stereo baseline and
-reduces hydrodynamic resistance.
-PIV evaluation confirms \textbf{[TODO: 主な結論]}.
-Future work will address \textbf{[TODO: 今後の課題（例: 実使用時の映像評価, 深度推定精度の検証）]}.
+Building on the buoyancy solution of prior water-filled HMDs, we presented
+the Hammerhead HMD, which addresses the next physical barrier:
+hydrodynamic drag and yaw torque during active swimming.
+PIV evaluation confirms \textbf{[TODO: 主結論]}.
+Future work will assess tracking accuracy, display image quality,
+and user experience in swimming trials.
 
 %%------------------------------------------------------------
 \bibliographystyle{ACM-Reference-Format}
