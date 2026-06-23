@@ -1,16 +1,17 @@
 \documentclass[sigconf]{acmart}
 
+%% Rights info — fill in after rights form submission
 \setcopyright{acmlicensed}
 \copyrightyear{2026}
 \acmYear{2026}
 \acmDOI{XXXXXXX.XXXXXXX}
 
-\acmConference[SIGGRAPH Asia 2026]{ACM SIGGRAPH Asia 2026 Posters}{December 2026}{Tokyo, Japan}
+\acmConference[SA '26]{ACM SIGGRAPH Asia 2026 Posters}{December 2026}{Tokyo, Japan}
 \acmISBN{XXX-X-XXXX-XXXX-X/26/12}
 
 \begin{document}
 
-\title{Hammerhead HMD: An Underwater Augmented Reality Headset with Cephalophoil-Inspired Design}
+\title{Hammerhead HMD: A Cephalophoil-Inspired Underwater Augmented Reality Headset}
 
 \author{Sho Nakazawa}
 \affiliation{%
@@ -20,48 +21,104 @@
 }
 \email{shonkzw0927@gmail.com}
 
+%%
+%% TODO: 共著者がいれば追加
+%%
+
 \begin{abstract}
-We present Hammerhead HMD, an underwater augmented reality head-mounted display inspired by the cephalophoil morphology of hammerhead sharks.
-The device is designed to enhance spatial perception and information overlay in subaquatic environments.
-We evaluate the hydrodynamic performance of the device using Particle Image Velocimetry (PIV) in a water tunnel, demonstrating minimal flow disturbance.
+We present Hammerhead HMD, an underwater augmented reality head-mounted display
+inspired by the cephalophoil morphology of hammerhead sharks.
+The lateral extension of the housing improves stereoscopic depth perception
+and widens the horizontal field of view in subaquatic environments.
+We evaluate the hydrodynamic characteristics of the device using
+Particle Image Velocimetry (PIV) in a water tunnel,
+providing quantitative flow visualization around the headset.
+%% TODO: 定量的な結果（抗力係数など）が出たら1文追加
 \end{abstract}
 
-\keywords{underwater AR, head-mounted display, hydrodynamics, PIV, augmented reality}
+\keywords{underwater augmented reality, head-mounted display, hydrodynamics,
+particle image velocimetry, wearable}
 
 \maketitle
 
+%%------------------------------------------------------------
 \section{Introduction}
+%%------------------------------------------------------------
 
-Augmented reality in underwater environments presents unique engineering challenges including optical distortion, pressure resistance, and hydrodynamic drag.
-We propose the Hammerhead HMD, a cephalophoil-shaped underwater AR headset designed to address these challenges.
-The distinctive cephalophoil geometry, inspired by hammerhead sharks, provides improved lateral field of view while reducing hydrodynamic resistance.
+Augmented reality in underwater environments demands optics that withstand
+pressure, a housing that resists hydrodynamic drag, and a form factor
+compatible with diving equipment.
+Conventional terrestrial HMDs are ill-suited for this context:
+their boxy profiles generate turbulence, and their narrow baselines
+reduce depth cue reliability in water, where light refracts differently
+than in air.
 
+We take design inspiration from the hammerhead shark (\textit{Sphyrna} spp.),
+whose cephalophoil—the distinctive lateral extension of the head—spatially
+separates the eyes to enhance binocular parallax and electroreceptor coverage.
+Adopting this geometry for an HMD places display and camera modules at a wider
+baseline, improving stereo depth estimation while reducing frontal cross-section.
+
+%%------------------------------------------------------------
 \section{System Design}
+%%------------------------------------------------------------
 
-\subsection{Optical Design}
-[Describe the optical system here]
+%% TODO: システム写真 or CADレンダリングを figures/system.png に追加
 
 \subsection{Structural Design}
-The housing adopts a cephalophoil morphology, extending laterally to house wide-baseline cameras and displays.
-This geometry distributes optical elements similarly to the eye placement of hammerhead sharks, enhancing stereoscopic depth perception underwater.
+The housing extends laterally \textbf{[TODO: 寸法 mm]} on each side from the
+diver's midline, forming the cephalophoil profile.
+The body is fabricated from \textbf{[TODO: 素材（例: 3Dプリント PLA / PETG / アルミ）]}
+and is sealed to \textbf{[TODO: 耐水圧仕様 (m)]} depth.
 
+\subsection{Optical \& Sensing Configuration}
+Each lateral pod houses a \textbf{[TODO: カメラ仕様（例: 広角レンズ, 解像度）]}
+and a \textbf{[TODO: ディスプレイ（例: micro-OLED, FoV）]}.
+Stereo baseline is \textbf{[TODO: mm]}, compared to approximately
+65\,mm in a typical terrestrial HMD.
+
+%%------------------------------------------------------------
 \section{Hydrodynamic Evaluation}
-
-We evaluate the device using Particle Image Velocimetry (PIV) in a water tunnel facility.
-PIV allows quantitative visualization of the flow field around the HMD, enabling measurement of drag and turbulence characteristics.
+%%------------------------------------------------------------
 
 \subsection{Experimental Setup}
-[Describe PIV setup and water tunnel parameters]
+
+We evaluated flow behavior using Particle Image Velocimetry (PIV)
+in a recirculating water tunnel.
+A high-speed camera captured tracer particle images at \textbf{4{,}000\,fps}.
+The headset was oscillated at \textbf{5\,Hz} with a stroke of \textbf{9\,mm}
+over \textbf{30 steps} to simulate diver head motion during swimming.
+PIV analysis was performed using PIVlab~\cite{thielicke2021pivlab}.
+
+%% TODO: 水槽の流速（自由流速 U_inf）を記載
+%% TODO: Re数を計算して記載
 
 \subsection{Results}
-[Present PIV results and flow visualization]
 
+Figure~\ref{fig:piv} shows \textbf{[TODO: 代表フレーム or 平均流速場の図]}.
+The cephalophoil profile produced \textbf{[TODO: 観察された流れの特徴（例: 低乱流域, 後流の対称性など）]}.
+%% TODO: 定量結果（例: 最大流速, 抗力推定, 比較対象との差異）
+
+\begin{figure}[h]
+  \centering
+  %% TODO: PIVlab_out.mp4 から代表フレームを切り出して figures/piv_result.png に保存
+  \includegraphics[width=\linewidth]{figures/piv_result}
+  \caption{PIV flow visualization around the Hammerhead HMD.
+           Vectors show in-plane velocity; color encodes speed magnitude.}
+  \label{fig:piv}
+\end{figure}
+
+%%------------------------------------------------------------
 \section{Conclusion}
+%%------------------------------------------------------------
 
-We presented the Hammerhead HMD, an underwater AR headset with a cephalophoil-inspired design.
-PIV evaluation confirms [results].
-Future work includes [next steps].
+We presented the Hammerhead HMD, an underwater AR headset whose
+cephalophoil geometry simultaneously widens stereo baseline and
+reduces hydrodynamic resistance.
+PIV evaluation confirms \textbf{[TODO: 主な結論]}.
+Future work will address \textbf{[TODO: 今後の課題（例: 実使用時の映像評価, 深度推定精度の検証）]}.
 
+%%------------------------------------------------------------
 \bibliographystyle{ACM-Reference-Format}
 \bibliography{references}
 
